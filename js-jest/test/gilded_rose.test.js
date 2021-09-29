@@ -52,7 +52,7 @@ describe("Gilded Rose", function () {
 			},
 		]);
 	});
-	it("should updates the status of any item", function () {
+	it("should updates the status of any Item", function () {
 		const gildedRose = new Shop([
 			new Item("Any Item", 20, 20),
 			new Item(agedBrie, 20, 20),
@@ -82,6 +82,26 @@ describe("Gilded Rose", function () {
 			{
 				name: sulfuras,
 				sellIn: 20,
+				quality: 20,
+			},
+		]);
+	});
+	it("should updates the status of any Items, including on edge cases", function () {
+		const gildedRose = new Shop([
+			new Item("Any Name", 0, 2),
+			new Item(sulfuras, -1, 20),
+		]);
+		const items = gildedRose.allItems;
+		gildedRose.updateQuality();
+		expect(items).toEqual([
+			{
+				name: "Any Name",
+				sellIn: -1,
+				quality: 0,
+			},
+			{
+				name: sulfuras,
+				sellIn: -1,
 				quality: 20,
 			},
 		]);
