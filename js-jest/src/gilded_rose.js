@@ -14,61 +14,60 @@ class Shop {
 	static agedBrie = "Aged Brie";
 	static backstage = "Backstage passes to a TAFKAL80ETC concert";
 	static sulfuras = "Sulfuras, Hand of Ragnaros";
+	static maxQuality = 50;
+	static firstEveValorization = 10;
+	static secondEveValorization = 5;
 
 	get allItems() {
 		return this.items;
 	}
 
 	updateQuality() {
-		for (let i = 0; i < this.items.length; i++) {
-			if (
-				this.items[i].name != Shop.agedBrie &&
-				this.items[i].name != Shop.backstage
-			) {
-				if (this.items[i].quality > 0) {
-					if (this.items[i].name != Shop.sulfuras) {
-						this.items[i].quality = this.items[i].quality - 1;
+		this.items.forEach(item => {
+			if (item.name != Shop.agedBrie && item.name != Shop.backstage) {
+				if (item.quality > 0) {
+					if (item.name != Shop.sulfuras) {
+						item.quality -= 1;
 					}
 				}
 			} else {
-				if (this.items[i].quality < 50) {
-					this.items[i].quality = this.items[i].quality + 1;
-					if (this.items[i].name == Shop.backstage) {
-						if (this.items[i].sellIn < 11) {
-							if (this.items[i].quality < 50) {
-								this.items[i].quality = this.items[i].quality + 1;
+				if (item.quality < Shop.maxQuality) {
+					item.quality += 1;
+					if (item.name == Shop.backstage) {
+						if (item.sellIn <= Shop.firstEveValorization) {
+							if (item.quality < Shop.maxQuality) {
+								item.quality += 1;
 							}
 						}
-						if (this.items[i].sellIn < 6) {
-							if (this.items[i].quality < 50) {
-								this.items[i].quality = this.items[i].quality + 1;
+						if (item.sellIn <= Shop.secondEveValorization) {
+							if (item.quality < Shop.maxQuality) {
+								item.quality += 1;
 							}
 						}
 					}
 				}
 			}
-			if (this.items[i].name != Shop.sulfuras) {
-				this.items[i].sellIn = this.items[i].sellIn - 1;
+			if (item.name != Shop.sulfuras) {
+				item.sellIn -= 1;
 			}
-			if (this.items[i].sellIn < 0) {
-				if (this.items[i].name != Shop.agedBrie) {
-					if (this.items[i].name != Shop.backstage) {
-						if (this.items[i].quality > 0) {
-							if (this.items[i].name != Shop.sulfuras) {
-								this.items[i].quality = this.items[i].quality - 1;
+			if (item.sellIn < 0) {
+				if (item.name != Shop.agedBrie) {
+					if (item.name != Shop.backstage) {
+						if (item.quality > 0) {
+							if (item.name != Shop.sulfuras) {
+								item.quality -= 1;
 							}
 						}
 					} else {
-						this.items[i].quality =
-							this.items[i].quality - this.items[i].quality;
+						item.quality = 0;
 					}
 				} else {
-					if (this.items[i].quality < 50) {
-						this.items[i].quality = this.items[i].quality + 1;
+					if (item.quality < Shop.maxQuality) {
+						item.quality += 1;
 					}
 				}
 			}
-		}
+		});
 	}
 }
 
