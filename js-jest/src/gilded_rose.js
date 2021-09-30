@@ -23,14 +23,22 @@ class Shop {
 
 	updateQuality() {
 		this.items.forEach(item => {
-			this.updateState(item);
+			this.updateStates(item);
 		});
 	}
 
-	updateState(item) {
+	updateStates(item) {
 		if (item.name === Shop.sulfuras) {
 			return;
 		}
+		this.updateQualityState(item);
+		item.sellIn -= 1;
+		if (item.name !== Shop.agedBrie && item.sellIn < 0) {
+			item.quality = 0;
+		}
+	}
+
+	updateQualityState(item) {
 		if (item.quality > 0 && item.quality < Shop.maxQuality) {
 			if (item.name === Shop.agedBrie || item.name === Shop.backstage) {
 				item.quality += 1;
@@ -49,10 +57,6 @@ class Shop {
 			} else {
 				item.quality -= 1;
 			}
-		}
-		item.sellIn -= 1;
-		if (item.name !== Shop.agedBrie && item.sellIn < 0) {
-			item.quality = 0;
 		}
 	}
 }

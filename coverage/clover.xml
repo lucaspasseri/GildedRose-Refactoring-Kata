@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1632970300587" clover="3.2.0">
-  <project timestamp="1632970300588" name="All files">
-    <metrics statements="32" coveredstatements="32" conditionals="25" coveredconditionals="25" methods="7" coveredmethods="7" elements="64" coveredelements="64" complexity="0" loc="32" ncloc="32" packages="2" files="2" classes="2"/>
+<coverage generated="1632971041469" clover="3.2.0">
+  <project timestamp="1632971041470" name="All files">
+    <metrics statements="33" coveredstatements="33" conditionals="25" coveredconditionals="25" methods="8" coveredmethods="8" elements="66" coveredelements="66" complexity="0" loc="33" ncloc="33" packages="2" files="2" classes="2"/>
     <package name="src">
-      <metrics statements="30" coveredstatements="30" conditionals="25" coveredconditionals="25" methods="6" coveredmethods="6"/>
+      <metrics statements="31" coveredstatements="31" conditionals="25" coveredconditionals="25" methods="7" coveredmethods="7"/>
       <file name="gilded_rose.js" path="/home/lucas/Área de Trabalho/ISIC-test/GildedRose-Refactoring-Kata/js-jest/src/gilded_rose.js">
-        <metrics statements="30" coveredstatements="30" conditionals="25" coveredconditionals="25" methods="6" coveredmethods="6"/>
-        <line num="3" count="10" type="stmt"/>
-        <line num="4" count="10" type="stmt"/>
-        <line num="5" count="10" type="stmt"/>
+        <metrics statements="31" coveredstatements="31" conditionals="25" coveredconditionals="25" methods="7" coveredmethods="7"/>
+        <line num="3" count="47" type="stmt"/>
+        <line num="4" count="47" type="stmt"/>
+        <line num="5" count="47" type="stmt"/>
         <line num="10" count="6" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
@@ -21,21 +21,22 @@
         <line num="26" count="122" type="stmt"/>
         <line num="31" count="122" type="cond" truecount="2" falsecount="0"/>
         <line num="32" count="31" type="stmt"/>
-        <line num="34" count="91" type="cond" truecount="4" falsecount="0"/>
-        <line num="35" count="70" type="cond" truecount="4" falsecount="0"/>
-        <line num="36" count="49" type="stmt"/>
-        <line num="37" count="49" type="cond" truecount="2" falsecount="0"/>
-        <line num="38" count="19" type="cond" truecount="2" falsecount="0"/>
-        <line num="39" count="9" type="cond" truecount="2" falsecount="0"/>
-        <line num="40" count="8" type="stmt"/>
-        <line num="43" count="19" type="cond" truecount="2" falsecount="0"/>
-        <line num="44" count="4" type="cond" truecount="2" falsecount="0"/>
-        <line num="45" count="3" type="stmt"/>
-        <line num="50" count="21" type="stmt"/>
-        <line num="53" count="91" type="stmt"/>
-        <line num="54" count="91" type="cond" truecount="4" falsecount="0"/>
-        <line num="55" count="21" type="stmt"/>
-        <line num="60" count="1" type="stmt"/>
+        <line num="34" count="91" type="stmt"/>
+        <line num="35" count="91" type="stmt"/>
+        <line num="36" count="91" type="cond" truecount="4" falsecount="0"/>
+        <line num="37" count="21" type="stmt"/>
+        <line num="42" count="91" type="cond" truecount="4" falsecount="0"/>
+        <line num="43" count="70" type="cond" truecount="4" falsecount="0"/>
+        <line num="44" count="49" type="stmt"/>
+        <line num="45" count="49" type="cond" truecount="2" falsecount="0"/>
+        <line num="46" count="19" type="cond" truecount="2" falsecount="0"/>
+        <line num="47" count="9" type="cond" truecount="2" falsecount="0"/>
+        <line num="48" count="8" type="stmt"/>
+        <line num="51" count="19" type="cond" truecount="2" falsecount="0"/>
+        <line num="52" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="53" count="3" type="stmt"/>
+        <line num="58" count="21" type="stmt"/>
+        <line num="64" count="1" type="stmt"/>
       </file>
     </package>
     <package name="utils">

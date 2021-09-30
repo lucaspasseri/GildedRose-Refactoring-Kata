@@ -37,7 +37,8 @@ describe("Gilded Rose", function () {
 	it("allows bad assigment", function () {
 		const badSulfuras = new Item(sulfuras, -1, 0);
 		const badBrie = new Item(agedBrie, -1, -1);
-		const gildedRose = new Shop([badSulfuras, badBrie]);
+		const badBackstage = new Item(backstage, -1, 1);
+		const gildedRose = new Shop([badSulfuras, badBrie, badBackstage]);
 		const items = gildedRose.allItems;
 		expect(items).toEqual([
 			{
@@ -50,6 +51,11 @@ describe("Gilded Rose", function () {
 				sellIn: -1,
 				quality: -1,
 			},
+			{
+				name: backstage,
+				sellIn: -1,
+				quality: 1,
+			},
 		]);
 	});
 	it("should updates the status of any Item", function () {
@@ -59,10 +65,10 @@ describe("Gilded Rose", function () {
 			new Item(backstage, 20, 20),
 			new Item(sulfuras, 20, 20),
 		]);
-		const items = gildedRose.allItems;
 		for (let i = 0; i < 30; i++) {
 			gildedRose.updateQuality();
 		}
+		const items = gildedRose.allItems;
 		expect(items).toEqual([
 			{
 				name: "Any Item",
@@ -91,8 +97,9 @@ describe("Gilded Rose", function () {
 			new Item("Any Name", 0, 2),
 			new Item(sulfuras, -1, 20),
 		]);
-		const items = gildedRose.allItems;
+
 		gildedRose.updateQuality();
+		const items = gildedRose.allItems;
 		expect(items).toEqual([
 			{
 				name: "Any Name",
