@@ -38,7 +38,8 @@ describe("Gilded Rose", function () {
 		const badSulfuras = new Item(sulfuras, -1, 0);
 		const badBrie = new Item(agedBrie, -1, -1);
 		const badBackstage = new Item(backstage, -1, 1);
-		const gildedRose = new Shop([badSulfuras, badBrie, badBackstage]);
+		const badFoo = new Item("foo", -1, 51);
+		const gildedRose = new Shop([badSulfuras, badBrie, badBackstage, badFoo]);
 		const items = gildedRose.allItems;
 		expect(items).toEqual([
 			{
@@ -56,6 +57,11 @@ describe("Gilded Rose", function () {
 				sellIn: -1,
 				quality: 1,
 			},
+			{
+				name: "foo",
+				sellIn: -1,
+				quality: 51,
+			},
 		]);
 	});
 	it("should updates the status of any Item", function () {
@@ -63,7 +69,7 @@ describe("Gilded Rose", function () {
 			new Item("Any Item", 20, 20),
 			new Item(agedBrie, 20, 20),
 			new Item(backstage, 20, 20),
-			new Item(sulfuras, 20, 20),
+			new Item(sulfuras, Infinity, 80),
 		]);
 		for (let i = 0; i < 30; i++) {
 			gildedRose.updateQuality();
@@ -87,8 +93,8 @@ describe("Gilded Rose", function () {
 			},
 			{
 				name: sulfuras,
-				sellIn: 20,
-				quality: 20,
+				sellIn: Infinity,
+				quality: 80,
 			},
 		]);
 	});

@@ -28,36 +28,46 @@ class Shop {
 	}
 
 	updateStates(item) {
-		if (item.name === Shop.sulfuras) {
+		const isSulfuras = item.name === Shop.sulfuras;
+		if (isSulfuras) {
 			return;
 		}
-		this.updateQualityState(item);
-		item.sellIn -= 1;
-		if (item.name !== Shop.agedBrie && item.sellIn < 0) {
-			item.quality = 0;
-		}
-	}
 
-	updateQualityState(item) {
-		if (item.quality > 0 && item.quality < Shop.maxQuality) {
-			if (item.name === Shop.agedBrie || item.name === Shop.backstage) {
-				item.quality += 1;
-				if (item.name === Shop.backstage) {
-					if (item.sellIn <= Shop.firstEveValorization) {
-						if (item.quality < Shop.maxQuality) {
-							item.quality += 1;
-						}
-					}
-					if (item.sellIn <= Shop.secondEveValorization) {
-						if (item.quality < Shop.maxQuality) {
-							item.quality += 1;
-						}
-					}
-				}
-			} else {
-				item.quality -= 1;
-			}
+		item.sellIn -= 1;
+		const isTooLate = item.name !== Shop.agedBrie && item.sellIn < 0;
+		if (isTooLate) {
+			item.quality = 0;
+			return;
 		}
+
+		const validQuality = item.quality > 0 && item.quality < Shop.maxQuality;
+		if (!validQuality) {
+			return;
+		}
+
+		const isAgedBrie = item.name === Shop.agedBrie;
+		if (isAgedBrie) {
+			item.quality += 1;
+			return;
+		}
+
+		const isBackstage = item.name === Shop.backstage;
+		if (isBackstage) {
+			item.quality += 1;
+			if (item.sellIn < Shop.firstEveValorization) {
+				if (item.quality < Shop.maxQuality) {
+					item.quality += 1;
+				}
+			}
+			if (item.sellIn < Shop.secondEveValorization) {
+				if (item.quality < Shop.maxQuality) {
+					item.quality += 1;
+				}
+			}
+			return;
+		}
+
+		item.quality -= 1;
 	}
 }
 
