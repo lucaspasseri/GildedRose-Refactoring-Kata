@@ -13,6 +13,7 @@ class Shop {
 	static agedBrie = "Aged Brie";
 	static backstage = "Backstage passes to a TAFKAL80ETC concert";
 	static sulfuras = "Sulfuras, Hand of Ragnaros";
+	static conjured = "Conjured";
 	static maxQuality = 50;
 	static firstEveValorization = 10;
 	static secondEveValorization = 5;
@@ -34,6 +35,7 @@ class Shop {
 		}
 
 		item.sellIn -= 1;
+
 		const isTooLate = item.name !== Shop.agedBrie && item.sellIn < 0;
 		if (isTooLate) {
 			item.quality = 0;
@@ -64,6 +66,12 @@ class Shop {
 					item.quality += 1;
 				}
 			}
+			return;
+		}
+
+		const isConjured = item.name === Shop.conjured;
+		if (isConjured) {
+			item.quality -= 2;
 			return;
 		}
 
